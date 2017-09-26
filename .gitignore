@@ -1,0 +1,16 @@
+# Ignore generated folders
+node_modules/
+dist/
+coverage/
+build/
+lib
+
+# Ignore OS Specific files
+.DS_Store
+
+# Ignore error logs
+npm-debug.log
+yarn-error.log
+
+# Ignore WebStorm files
+.idea/

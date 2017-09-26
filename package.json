@@ -1,0 +1,87 @@
+{
+  "name": "react-ddd",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "scripts": {
+    "commitmsg": "validate-commit-msg",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "prettier": "prettier --write \"src/**/*.js\"",
+    "precommit": "lint-staged",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.2.10",
+    "babel-core": "^6.26.0",
+    "babel-jest": "20.0.3",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "dsv-loader": "^2.0.0",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^2.0.0",
+    "flow-bin": "^0.55.0",
+    "husky": "^0.14.3",
+    "jest": "20.0.4",
+    "lint-staged": "^4.2.2",
+    "prettier": "^1.7.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "jsxBracketSameLine": true
+  },
+  "config": {
+    "validate-commit-msg": {
+      "helpMessage": "\nNeed help? We're currently using a commit convention that is outlined here:\nhttps://github.com/conventional-changelog/conventional-changelog/blob/v0.5.3/conventions/angular.md\n\nWe use this convention in order to make contributions to the project clear and predictable.\n\nCurrently, we support the following types: feat, fix, docs, style, refactor, perf, test, chore, revert.\n\nYou can use these types in your commit message in the following fashion:\n\n$ git commit -m \"<type>(<scope>): some commit message here\""
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier",
+      "git add"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "testMatch": [
+      "<rootDir>/**/__tests__/**/*.js?(x)",
+      "<rootDir>/**/?(*.)(spec|test).js?(x)"
+    ],
+    "testURL": "http://localhost",
+    "testPathIgnorePatterns": [
+      "/config/",
+      "/lib/"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "d3-array": "^1.2.1",
+    "d3-axis": "^1.0.8",
+    "d3-scale": "^1.0.6",
+    "d3-selection": "^1.1.0",
+    "d3-shape": "^1.2.0",
+    "d3-time-format": "^2.0.5",
+    "warning": "^3.0.0"
+  }
+}
