@@ -10,7 +10,7 @@ import warning from 'warning';
 export default class GridLines extends React.Component {
   static contextTypes = {
     chart: PropTypes.object.isRequired,
-  }
+  };
 
   static propTypes = {
     className: PropTypes.string,
@@ -20,17 +20,17 @@ export default class GridLines extends React.Component {
     x: PropTypes.func,
     y: PropTypes.func,
     tickCount: PropTypes.number,
-  }
+  };
 
   static defaultProps = {
     tickCount: 5,
-  }
+  };
 
   componentWillMount() {
     warning(
       this.props.x !== undefined || this.props.y !== undefined,
       'Expected <GridLines> to be called with `x`, `y`, or both `x` and `y`, ' +
-        'where `x` and `y` are scales defined through `d3-axis`.'
+        'where `x` and `y` are scales defined through `d3-axis`.',
     );
   }
 
@@ -40,28 +40,33 @@ export default class GridLines extends React.Component {
     const { xLines, yLines } = this;
 
     if (x !== undefined) {
-      select(xLines)
-        .call(
-          axisBottom(x)
-            .ticks(tickCount)
-            .tickSize(-chart.height)
-            .tickFormat('')
-        )
+      select(xLines).call(
+        axisBottom(x)
+          .ticks(tickCount)
+          .tickSize(-chart.height)
+          .tickFormat(''),
+      );
     }
 
     if (y !== undefined) {
-      select(yLines)
-        .call(
-          axisLeft(y)
-            .ticks(tickCount)
-            .tickSize(-chart.width)
-            .tickFormat('')
-        )
+      select(yLines).call(
+        axisLeft(y)
+          .ticks(tickCount)
+          .tickSize(-chart.width)
+          .tickFormat(''),
+      );
     }
   }
 
   render() {
-    const { x, y, className, style, containerStyle, containerClassName } = this.props;
+    const {
+      x,
+      y,
+      className,
+      style,
+      containerStyle,
+      containerClassName,
+    } = this.props;
     const { chart } = this.context;
     const lineClassName = cx('GridLine', className);
 
@@ -70,7 +75,7 @@ export default class GridLines extends React.Component {
         <g
           style={style}
           className={lineClassName}
-          ref={el => this.xLines = el}
+          ref={el => (this.xLines = el)}
           style={{
             transform: `translateY(${chart.height}px)`,
           }}
@@ -78,7 +83,7 @@ export default class GridLines extends React.Component {
         <g
           style={style}
           className={lineClassName}
-          ref={el => this.yLines = el}
+          ref={el => (this.yLines = el)}
         />
       </g>
     );

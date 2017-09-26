@@ -13,7 +13,9 @@ type Props = {
 };
 
 const Line = ({ d, x, y, className, style }: Props) => {
-  const l = line().x(x).y(y);
+  const l = line()
+    .x(x)
+    .y(y);
 
   return <path d={l(d)} className={className} style={style} />;
 };

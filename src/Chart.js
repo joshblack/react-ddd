@@ -13,7 +13,7 @@ export default class Chart extends React.Component {
       bottom: PropTypes.number,
       left: PropTypes.number,
     }),
-  }
+  };
 
   static defaultProps = {
     width: 960,
@@ -24,7 +24,7 @@ export default class Chart extends React.Component {
       bottom: 30,
       left: 50,
     },
-  }
+  };
 
   static childContextTypes = {
     chart: PropTypes.shape({
@@ -33,7 +33,7 @@ export default class Chart extends React.Component {
       chartRef: PropTypes.any,
       margin: PropTypes.object,
     }),
-  }
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -59,21 +59,16 @@ export default class Chart extends React.Component {
     if (this.chart !== undefined) {
       return;
     }
-    this.setState({ ref: el }, () => this.chart = el);
-  }
+    this.setState({ ref: el }, () => (this.chart = el));
+  };
 
   render() {
     const { margin, width, height } = this.props;
     const transform = `translate(${margin.left},${margin.top})`;
 
     return (
-      <svg
-        width={width}
-        height={height}
-        ref={this.handleRef}>
-        <g transform={transform}>
-          {this.props.children}
-        </g>
+      <svg width={width} height={height} ref={this.handleRef}>
+        <g transform={transform}>{this.props.children}</g>
       </svg>
     );
   }

@@ -17,18 +17,17 @@ const directions = {
 export default class Axis extends React.Component {
   static contextTypes = {
     chart: PropTypes.object,
-  }
+  };
 
   static propTypes = {
     align: PropTypes.oneOf(Object.keys(directions)),
-  }
+  };
 
   componentDidMount() {
     const { align, scale } = this.props;
     const { chart } = this.context;
 
-    select(this.node)
-      .call(directions[align](scale))
+    select(this.node).call(directions[align](scale));
   }
 
   render() {
@@ -44,6 +43,6 @@ export default class Axis extends React.Component {
       transform = `translate(${chart.width}px,0)`;
     }
 
-    return <g ref={el => this.node = el} style={{ transform }} />;
+    return <g ref={el => (this.node = el)} style={{ transform }} />;
   }
 }
