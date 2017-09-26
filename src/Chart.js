@@ -64,7 +64,7 @@ export default class Chart extends React.Component {
 
   render() {
     const { margin, width, height } = this.props;
-    const transform = `translate(${margin.left},${margin.top})`;
+    const transform = `translate(${margin.left}px,${margin.top}px)`;
 
     return (
       <svg width={width} height={height} ref={this.handleRef}>
